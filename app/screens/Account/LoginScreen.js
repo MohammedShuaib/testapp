@@ -27,6 +27,7 @@ class LoginScreen extends Component {
         return(
             <View style={{ backgroundColor: 'blue', flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <InputField
+                    style={styles.emailField}
                     value={this.props.email}
                     name={"Email Field"}
                     hintText={"Email address"}

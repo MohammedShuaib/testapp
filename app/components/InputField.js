@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, StyleSheet} from 'react-native';
+import { View, Text, TextInput, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     textStyle: {
@@ -21,11 +21,12 @@ export default class InputField extends Component {
     }
 
     render() {
-        // console.log("Component Render Called", this.state.text);
+        console.log("Component Render Called", StyleSheet.flatten([styles.textStyle, this.props.style]));
         return(
             <View style={{ backgroundColor: 'blue', alignItems: 'center', justifyContent: 'center' }}>
                 <TextInput
-                    style={{ ...styles.textStyle, ...this.props.style}}
+                    {...this.props}
+                    style={[styles.textStyle, this.props.style]}
                     placeholder={this.props.hintText}
                     placeholderTextColor='red'
                     onChangeText={text => {
@@ -33,8 +34,6 @@ export default class InputField extends Component {
                         // this.setState({ text });
                     }}
                     value={this.props.value} 
-                    {...this.props}
-
                 />
             </View>
         );
