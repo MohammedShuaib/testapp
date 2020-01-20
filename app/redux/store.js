@@ -1,16 +1,24 @@
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 // import storage from 'redux-persist/lib/storage';
 import AsyncStorage from '@react-native-community/async-storage';
 
-import accountReducer from './reducers/accountReducer';
+import { accountReducer, experienceReducer } from './reducers';
 
-const persistConfig = {
-    key: 'root',
+const accountPersistConfig = {
+    key: 'account',
     storage: AsyncStorage
 }
 
-const reducers = persistReducer(persistConfig, accountReducer);
+const experiencePersistConfig = {
+    key: 'experience',
+    storage: AsyncStorage
+}
+
+const reducers = combineReducers({
+    account: persistReducer(accountPersistConfig, accountReducer),
+    experience: persistReducer(experiencePersistConfig, experienceReducer)
+});
 
 const store = createStore(reducers);
 

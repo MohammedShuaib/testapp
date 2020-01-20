@@ -27,10 +27,10 @@ class LoginScreen extends Component {
         return(
             <View style={{ backgroundColor: 'blue', flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <InputField
-                    value={this.props.emailA}
+                    value={this.props.email}
                     name={"Email Field"}
                     hintText={"Email address"}
-                    onTextChange={text => this.props.fieldChangedA('EMAIL', text)}
+                    onTextChange={text => this.props.fieldChanged('EMAIL', text)}
                 />
                 <InputField
                     value={this.state.password}
@@ -50,12 +50,11 @@ class LoginScreen extends Component {
 }
 
 const mapStateToProps = state => ({
-    emailA: state.email,
-    store: state
+    email: state.account.email,
 });
 
 const mapDispatchToProps = dispatch => ({
-    fieldChangedA: (name, value)  => dispatch(fieldChanged(name, value))
+    fieldChanged: (name, value)  => dispatch(fieldChanged(name, value))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
