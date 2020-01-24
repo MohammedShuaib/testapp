@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import InputField from '../../components/InputField';
-import { fieldChanged } from '../../redux/actions';
+import { fieldChanged, userDetails } from '../../redux/actions';
 
 const styles = StyleSheet.create({
     emailField: {
@@ -41,7 +41,7 @@ class LoginScreen extends Component {
                 />
                 <TouchableOpacity
                     style={{ width: 200, height: 40, borderRadius: 20, backgroundColor: 'white', margin: 10, alignItem: 'center', justifyContent: 'center'}}
-                    onPress={() => this.props.navigation.navigate('Home')}
+                    onPress={() => this.props.userDetails(1)}
                 >
                     <Text style={{ flex: 1, textAlign: 'center', fontSize: 24}}>Login</Text>
                 </TouchableOpacity>
@@ -55,7 +55,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    fieldChanged: (name, value)  => dispatch(fieldChanged(name, value))
+    fieldChanged: (name, value)  => dispatch(fieldChanged(name, value)),
+    userDetails: uid => dispatch(userDetails(uid))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
