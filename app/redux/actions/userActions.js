@@ -4,21 +4,27 @@
  } from '../constants';
  import axios from 'axios';
 
- const userDetails = uid = dispatch => {
+ const userDetails = uid => dispatch => {
      console.log('-----User Details Called-----');
     // dispatch({ type: 'LOGIN' });
 
-    return axios.get('http://34.70.55.152/api/v1/userdetails')
+    return axios.get('https://www.google.com')
         .then(res => {
             console.log("Response", res);
 
             dispatch({ 
                 type: 'LOGIN_SUCCESS',
-                payload: res
+                payload: {
+                    success: true
+                }
             });
+        })
+        .catch(error => {
+                    dispatch({
+                        type: 'LOGIN_FAIL',
+                        payload: res
+                    });
         });
-    
-    
 };
 
 const fieldChanged = (name, value) => {
