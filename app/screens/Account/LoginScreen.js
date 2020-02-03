@@ -41,7 +41,7 @@ class LoginScreen extends Component {
                 />
                 <TouchableOpacity
                     style={{ width: 200, height: 40, borderRadius: 20, backgroundColor: 'white', margin: 10, alignItem: 'center', justifyContent: 'center'}}
-                    onPress={() => this.props.userDetails(1)}
+                    onPress={() => this.props.navigation.navigate('Home')}
                 >
                     <Text style={{ flex: 1, textAlign: 'center', fontSize: 24}}>Login</Text>
                 </TouchableOpacity>
